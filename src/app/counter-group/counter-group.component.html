@@ -1,0 +1,7 @@
+<div>
+    <button (click)="addCounter()">addCounter</button>
+    <app-counter *ngFor="let item of counters" 
+        [count]="item"
+        (onNumChange)="handleCountChange($event)"
+        ></app-counter>
+</div>
