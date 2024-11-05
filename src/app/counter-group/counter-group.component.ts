@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { CounterComponent } from '../counter/counter.component'
+import { CounterComponent, ICounter } from '../counter/counter.component'
 import { CommonModule } from '@angular/common';
-import { count } from 'rxjs';
 
 @Component({
   selector: 'app-counter-group',
@@ -11,17 +10,22 @@ import { count } from 'rxjs';
   styleUrl: './counter-group.component.css'
 })
 export class CounterGroupComponent {
-  counters = [0];
-
-  // get counterList() {
-  //   return this.counters;
-  // }
-
-  handleCountChange(newCount: number):void {
-    console.log(newCount)
+  counters = [{
+    id: 0,
+    number: 0
+  }];
+  get sum() {
+    return this.counters.reduce((a, b) => a + b.number, 0)
+  }
+  handleCountChange(newCount: ICounter): void {
+    let existCounter = this.counters.find(x=> x.id === newCount.id);
+    existCounter!.number = newCount.count
   }
 
   addCounter() {
-    this.counters.push(0)
+    this.counters.push({
+      id: this.counters.length,
+      number: 0
+    })
   }
 }
