@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CounterComponent, ICounter } from '../counter/counter.component'
 import { CommonModule } from '@angular/common';
+import { CounterService } from '../services/counter.service'
 
 @Component({
   selector: 'app-counter-group',
@@ -10,22 +11,17 @@ import { CommonModule } from '@angular/common';
   styleUrl: './counter-group.component.css'
 })
 export class CounterGroupComponent {
-  counters = [{
-    id: 0,
-    number: 0
-  }];
-  get sum() {
-    return this.counters.reduce((a, b) => a + b.number, 0)
-  }
+
+  constructor(public cntService: CounterService) {}
+
   handleCountChange(newCount: ICounter): void {
-    let existCounter = this.counters.find(x=> x.id === newCount.id);
-    existCounter!.number = newCount.count
+    this.cntService.updateCounter(newCount.id, newCount.count)
   }
 
   addCounter() {
-    this.counters.push({
-      id: this.counters.length,
-      number: 0
-    })
+     // 你可以根据需要设置 count 或其他属性
+
+    // 获取当前 counters 数组
+    this.cntService.addCounter(0);
   }
 }

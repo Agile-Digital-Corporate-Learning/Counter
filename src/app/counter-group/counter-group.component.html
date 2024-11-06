@@ -1,9 +1,9 @@
 <div>
     <button class="add-counter-btn" (click)="addCounter()">addCounter</button>
-    <app-counter *ngFor="let item of counters" 
-        [count]="item.number"
+    <app-counter *ngFor="let item of cntService.counters$ | async" 
+        [count]="item.count"
         [id]="item.id"
         (onNumChange)="handleCountChange($event)"
         ></app-counter>
-    <div class="sum">{{ sum }}</div>
+    <div class="sum">{{ cntService.sum$ | async }}</div>
 </div>
