@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CounterGroupComponent } from './counter-group/counter-group.component'
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CounterGroupComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [RouterModule],
+  template: `
+    <nav>
+      <a routerLink="/counter-group">Counter Group</a>
+      |
+      <a routerLink="/summary">Summary</a> |
+    </nav>
+    <router-outlet></router-outlet>
+  `
 })
 export class AppComponent {
-  title = 'Counter';
+  title = 'counter-app';
 }
