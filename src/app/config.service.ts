@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class CounterService {
+export class ConfigService {
   config: Config = {
     counterSize: 0,
     max: 0,

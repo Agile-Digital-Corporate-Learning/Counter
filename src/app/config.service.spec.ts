@@ -2,21 +2,21 @@ import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
 
-import { Config, CounterService } from './counter.service';
+import { Config, ConfigService } from './config.service';
 
 describe('CounterService', () => {
-  let service: CounterService;
+  let service: ConfigService;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        CounterService,
+        ConfigService,
         provideHttpClient(),
         provideHttpClientTesting()
       ]
     });
-    service = TestBed.inject(CounterService);
+    service = TestBed.inject(ConfigService);
     httpTestingController = TestBed.inject(HttpTestingController);
   });
 
